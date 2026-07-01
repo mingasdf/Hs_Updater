@@ -1,28 +1,8 @@
 [
-  {
-    "action": "log",
-    "message": "开始 OTA 流程"
-  },
-  {
-    "action": "set",
-    "variable": "patch_file",
-    "value": "patch_v1.0.6.zip"
-  },
-  {
-    "action": "download",
-    "url": "https://example.com/patches/patch_v1.0.6.zip",
-    "dest": "${patch_file}"
-  },
-  {
-    "action": "apply",
-    "zip": "${patch_file}",
-    "password": "abc123"
-  },
-  {
-    "action": "log",
-    "message": "补丁应用完成"
-  },
-  {
-    "action": "check_update"
-  }
-] 
+  {"action": "log", "message": "开始 OTA 流程"},
+  {"action": "set", "variable": "patch_file", "value": "patch.zip"},
+  {"action": "apply", "zip": "${patch_file}", "password": "abc123", "force": true},
+  {"action": "exec", "cmd": "echo 更新完成 >> log.txt", "output_var": "result"},
+  {"action": "log", "message": "命令输出: ${result}"},
+  {"action": "mouse_click", "x": 100, "y": 200}
+]
